@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
 var bodyParser = require('body-parser');
 var port = 3000;
 var neo4j = require('neo4j-driver').v1;
@@ -8,7 +7,6 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 var driver = neo4j.driver('bolt://localhost', neo4j.auth.basic('neo4j','password'));
 var session = driver.session();
